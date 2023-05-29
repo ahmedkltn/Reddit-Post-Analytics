@@ -46,17 +46,12 @@ class RedditAPI:
             print("Failed to connect to the post !")
             return None
     # get comments
-    def get_comments(self,is_get_replies = False):
+    def get_comments(self):
         if self._connect_post():
             # Dict to save comments
             data_comments = dict(body=[],score=[],created=[])
-            # if is_get_replies = True then get all replies
-            if is_get_replies : 
-                limit = None
-            else:
-                limit = 0
             # Retrieve the comments
-            self.submission.comments.replace_more(limit=limit)
+            self.submission.comments.replace_more(limit=50)
             comments = self.submission.comments.list()
             for comment in comments :
                 # save comments
