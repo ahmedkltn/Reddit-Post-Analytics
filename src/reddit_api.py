@@ -1,12 +1,20 @@
 # Importing libraries :
 import praw
-
+import json
 
 class RedditAPI:
     # init
     def __init__(self, post_url):
         user_agent = 'PostAnalytics'
-        self.reddit = praw.Reddit(user_agent=user_agent)
+        credentials_file = 'credentials.json'
+        with open(credentials_file) as file :
+            credentials = json.load(file)
+        client_id = credentials['client_id']
+        client_secret = credentials['client_secret'] 
+        self.reddit = praw.Reddit(
+            client_id=client_id,
+            client_secret = client_secret,
+            user_agent=user_agent)
         self.post_url = post_url
 
     # connect to post
