@@ -3,7 +3,7 @@ import pandas as pd
 import re
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
-from nltk.stem import PorterStemmer
+from nltk.stem import PorterStemmer,WordNetLemmatizer
 class TextCleaner :
 
     # init
@@ -26,18 +26,22 @@ class TextCleaner :
         return tokens
 
     # Remove stop words
-    def remove_stop_words(self,tokens):
+    def remove_stop_words(self, tokens):
         stop_words = set(stopwords.words("english"))
         filtered_tokens = [token for token in tokens if token not in stop_words]
         return filtered_tokens
     
     # Performing stemming 
-    def perform_stemming(self,tokens):
+    def perform_stemming(self, tokens):
         stemmer = PorterStemmer()
         stemmed_tokens = [stemmer.stem(token) for token in tokens]
         return stemmed_tokens
-    
-    def clean_text(self,text):
+    # Performing lemmatizations
+    def perform_lemmatization(self, tokens):
+        lemmatizer = WordNetLemmatizer()
+        lemmtized_tokens = [lemmatizer.lemmatize(token) for token in tokens]
+        return lemmtized_tokens
+    def clean_text(self, text):
         #Applying remove special characters
         cleaned_text = self.remove_special_characters(text)
         #Applying to lowercase
@@ -47,6 +51,6 @@ class TextCleaner :
         #Remove stop words
         tokens = self.remove_stop_words(tokens)
         #Applying stemming
-        tokens = self.perform_stemming(tokens)
+        tokens = self.perform_lemmatization(tokens)
         # return tokens
-        return tokens
+        return " ".join(tokens)     
