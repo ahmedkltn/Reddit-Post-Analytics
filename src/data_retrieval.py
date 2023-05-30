@@ -12,8 +12,8 @@ def get_data(post_url):
         df_post_info = pd.DataFrame(post_info, index=range(1, 2))
         index_comments = range(1, len(comments_info["body"])+1)
         df_comments_info = pd.DataFrame(comments_info, index=index_comments)
-        df_post_info.to_csv('../data/post_info.csv')
-        df_comments_info.to_csv('../data/comments_info.csv')
+        df_post_info.to_csv('../data/raw_post_info.csv')
+        df_comments_info.to_csv('../data/raw_comments_info.csv')
     except Exception as e:
         print(e)
 
