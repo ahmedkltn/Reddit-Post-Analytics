@@ -49,12 +49,13 @@ class RedditAPI:
     def get_comments(self):
         if self._connect_post():
             # Dict to save comments
-            data_comments = dict(body=[],score=[],created=[])
+            data_comments = dict(author=[],body=[],score=[],created=[])
             # Retrieve the comments
             self.submission.comments.replace_more(limit=50)
             comments = self.submission.comments.list()
             for comment in comments :
                 # save comments
+                data_comments['author'].append(comment.author)
                 data_comments['body'].append(comment.body)
                 data_comments['score'].append(comment.score)
                 # convert unix timestamp in seconds to strftime format
