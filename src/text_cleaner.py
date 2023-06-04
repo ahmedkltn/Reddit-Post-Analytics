@@ -49,8 +49,8 @@ class TextCleaner :
         #Appling tokenzing
         tokens = self.tokenize_text(cleaned_text)
         #Remove stop words
-        tokens = self.remove_stop_words(tokens)
+        filtered_tokens = self.remove_stop_words(tokens)
         #Applying stemming
-        tokens = self.perform_lemmatization(tokens)
+        lemmtized_tokens = self.perform_lemmatization(filtered_tokens)
         # return tokens
-        return " ".join(tokens)     
+        return " ".join(lemmtized_tokens)

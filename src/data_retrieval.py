@@ -1,6 +1,7 @@
 from reddit_api import RedditAPI
 import numpy as np
 import pandas as pd
+from text_cleaner import TextCleaner
 # get data
 def get_data(post_url):
     try:
@@ -12,6 +13,7 @@ def get_data(post_url):
         df_post_info = pd.DataFrame(post_info, index=range(1, 2))
         index_comments = range(1, len(comments_info["body"])+1)
         df_comments_info = pd.DataFrame(comments_info, index=index_comments)
+        df_comments_info["body"] = df_comments_info["body"].apply(TextCleaner().clean_text)
         df_post_info.to_csv('../data/raw_post_info.csv')
         df_comments_info.to_csv('../data/raw_comments_info.csv')
         return True
