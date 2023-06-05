@@ -8,11 +8,11 @@ Reddit Post Analytics is a web application that allows users to gain valuable in
 - **Active Redditors**: Visualizes the top 10 active redditors by the number of comments and score.
 - **Comments Analysis**: Provides visualizations such as the number of comments by hour and word frequency analysis.
 - **Sentiment Analysis**: Performs sentiment analysis on the comments and presents a pie chart showing the sentiment distribution.
-
+## Preview
+![gif-preview](https://github.com/ahmedkltn/Reddit-Post-Analytics/assets/88550715/aa367965-c4ab-422d-b28e-aaa963ae9752)
 ## Installation
-
 1. Clone the repository:
-    
+
     ```bash
     git clone https://github.com/ahmedkltn/Reddit-Post-Analytics.git
     ```
